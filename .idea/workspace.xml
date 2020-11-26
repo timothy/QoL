@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="69ebb793-7e90-4bc1-a1da-db86063d9048" name="Default Changelist" comment="" />
+    <list default="true" id="69ebb793-7e90-4bc1-a1da-db86063d9048" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/sample.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +17,9 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1koH7i1ZuexsVLGHVqasJCixv42" />
   <component name="ProjectViewState">
@@ -28,6 +35,16 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RunManager">
+    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/index.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.index.js" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -37,10 +54,109 @@
       <option name="presentableId" value="Default" />
       <updated>1606359858618</updated>
       <workItem from="1606359859631" duration="229000" />
+      <workItem from="1606360093940" duration="9978000" />
     </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <created>1606360252774</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606360252774</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="678" y="110" width="1305" height="893" key="CommitChangelistDialog2" timestamp="1606360252703">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state x="678" y="110" width="1305" height="893" key="CommitChangelistDialog2/72.27.2488.1053@72.27.2488.1053" timestamp="1606360252703" />
+    <state width="2465" height="275" key="GridCell.Tab.0.bottom" timestamp="1606379074615">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state width="2465" height="275" key="GridCell.Tab.0.bottom/72.27.2488.1053@72.27.2488.1053" timestamp="1606379074615" />
+    <state width="2465" height="275" key="GridCell.Tab.0.center" timestamp="1606379074615">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state width="2465" height="275" key="GridCell.Tab.0.center/72.27.2488.1053@72.27.2488.1053" timestamp="1606379074615" />
+    <state width="2465" height="275" key="GridCell.Tab.0.left" timestamp="1606379074615">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state width="2465" height="275" key="GridCell.Tab.0.left/72.27.2488.1053@72.27.2488.1053" timestamp="1606379074615" />
+    <state width="2465" height="275" key="GridCell.Tab.0.right" timestamp="1606379074615">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state width="2465" height="275" key="GridCell.Tab.0.right/72.27.2488.1053@72.27.2488.1053" timestamp="1606379074615" />
+    <state width="2465" height="319" key="GridCell.Tab.1.bottom" timestamp="1606373546139">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state width="2465" height="319" key="GridCell.Tab.1.bottom/72.27.2488.1053@72.27.2488.1053" timestamp="1606373546139" />
+    <state width="2465" height="319" key="GridCell.Tab.1.center" timestamp="1606373546139">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state width="2465" height="319" key="GridCell.Tab.1.center/72.27.2488.1053@72.27.2488.1053" timestamp="1606373546139" />
+    <state width="2465" height="319" key="GridCell.Tab.1.left" timestamp="1606373546139">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state width="2465" height="319" key="GridCell.Tab.1.left/72.27.2488.1053@72.27.2488.1053" timestamp="1606373546139" />
+    <state width="2465" height="319" key="GridCell.Tab.1.right" timestamp="1606373546139">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state width="2465" height="319" key="GridCell.Tab.1.right/72.27.2488.1053@72.27.2488.1053" timestamp="1606373546139" />
+    <state width="2465" height="319" key="GridCell.Tab.2.bottom" timestamp="1606373546139">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state width="2465" height="319" key="GridCell.Tab.2.bottom/72.27.2488.1053@72.27.2488.1053" timestamp="1606373546139" />
+    <state width="2465" height="319" key="GridCell.Tab.2.center" timestamp="1606373546139">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state width="2465" height="319" key="GridCell.Tab.2.center/72.27.2488.1053@72.27.2488.1053" timestamp="1606373546139" />
+    <state width="2465" height="319" key="GridCell.Tab.2.left" timestamp="1606373546139">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state width="2465" height="319" key="GridCell.Tab.2.left/72.27.2488.1053@72.27.2488.1053" timestamp="1606373546139" />
+    <state width="2465" height="319" key="GridCell.Tab.2.right" timestamp="1606373546139">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state width="2465" height="319" key="GridCell.Tab.2.right/72.27.2488.1053@72.27.2488.1053" timestamp="1606373546139" />
+    <state width="2465" height="319" key="GridCell.Tab.3.bottom" timestamp="1606373546140">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state width="2465" height="319" key="GridCell.Tab.3.bottom/72.27.2488.1053@72.27.2488.1053" timestamp="1606373546140" />
+    <state width="2465" height="319" key="GridCell.Tab.3.center" timestamp="1606373546140">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state width="2465" height="319" key="GridCell.Tab.3.center/72.27.2488.1053@72.27.2488.1053" timestamp="1606373546140" />
+    <state width="2465" height="319" key="GridCell.Tab.3.left" timestamp="1606373546139">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state width="2465" height="319" key="GridCell.Tab.3.left/72.27.2488.1053@72.27.2488.1053" timestamp="1606373546139" />
+    <state width="2465" height="319" key="GridCell.Tab.3.right" timestamp="1606373546140">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state width="2465" height="319" key="GridCell.Tab.3.right/72.27.2488.1053@72.27.2488.1053" timestamp="1606373546140" />
+    <state x="1149" y="414" width="324" height="264" key="VCS.EditChangelistDialog" timestamp="1606360161357">
+      <screen x="72" y="27" width="2488" height="1053" />
+    </state>
+    <state x="1149" y="414" width="324" height="264" key="VCS.EditChangelistDialog/72.27.2488.1053@72.27.2488.1053" timestamp="1606360161357" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/index.js</url>
+          <line>80</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

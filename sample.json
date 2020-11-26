@@ -1,0 +1,763 @@
+{
+  "resourceType": "Bundle",
+  "id": "a5242c26-7971-4a4b-8b4c-1fa5526f4087",
+  "meta": {
+    "lastUpdated": "2020-11-26T07:04:29.777+00:00"
+  },
+  "type": "searchset",
+  "total": 11,
+  "link": [
+    {
+      "relation": "self",
+      "url": "http://hapi.fhir.org/baseR4/Condition?_include=*&_pretty=true&patient=1265109"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "http://hapi.fhir.org/baseR4/Condition/1265119",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1265119",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2020-06-23T05:29:43.908+00:00",
+          "source": "#TYMP8b4JHMJz2AYP"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Hypercholesterolaemia</div>"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "14657009",
+                "display": "Diagnosis"
+              }
+            ],
+            "text": "Diagnosis"
+          }
+        ],
+        "severity": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "6736007",
+              "display": "moderate"
+            }
+          ],
+          "text": "Moderate"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "13644009",
+              "display": "high cholesterol"
+            }
+          ],
+          "text": "high cholesterol"
+        },
+        "subject": {
+          "reference": "Patient/1265109"
+        },
+        "onsetAge": {
+          "value": 68,
+          "system": "http://unitsofmeasure.org",
+          "code": "a"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "http://hapi.fhir.org/baseR4/Condition/1265117",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1265117",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2020-06-23T05:29:43.908+00:00",
+          "source": "#TYMP8b4JHMJz2AYP"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Rheumatoid arthritis - left elbow</div>"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "14657009",
+                "display": "Diagnosis"
+              }
+            ],
+            "text": "Diagnosis"
+          }
+        ],
+        "severity": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "6736007",
+              "display": "mild to moderate"
+            }
+          ],
+          "text": "Diagnosis"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "69896004",
+              "display": "rheumatoid arthritis"
+            }
+          ],
+          "text": "rheumatoid arthritis - left elbow"
+        },
+        "subject": {
+          "reference": "Patient/1265109"
+        },
+        "onsetAge": {
+          "value": 74,
+          "system": "http://unitsofmeasure.org",
+          "code": "a"
+        },
+        "evidence": [
+          {
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/ct",
+                    "code": "57676002",
+                    "display": "Painful Joint"
+                  }
+                ],
+                "text": "Painful joint"
+              }
+            ]
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "http://hapi.fhir.org/baseR4/Condition/1265118",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1265118",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2020-06-23T05:29:43.908+00:00",
+          "source": "#TYMP8b4JHMJz2AYP"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">GERD</div>"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "14657009",
+                "display": "Diagnosis"
+              }
+            ],
+            "text": "Diagnosis"
+          }
+        ],
+        "severity": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "6736007",
+              "display": "moderate"
+            }
+          ],
+          "text": "Moderate"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "235595009",
+              "display": "GERD"
+            }
+          ],
+          "text": "GERD"
+        },
+        "subject": {
+          "reference": "Patient/1265109"
+        },
+        "onsetAge": {
+          "value": 66,
+          "system": "http://unitsofmeasure.org",
+          "code": "a"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "http://hapi.fhir.org/baseR4/Condition/1265111",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1265111",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2020-06-23T05:29:43.908+00:00",
+          "source": "#TYMP8b4JHMJz2AYP"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Asthma</div>"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "14657009",
+                "display": "Diagnosis"
+              }
+            ],
+            "text": "Diagnosis"
+          }
+        ],
+        "severity": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "6736007",
+              "display": "mild to moderate"
+            }
+          ],
+          "text": "mild to moderate"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "195917001",
+              "display": "asthma"
+            }
+          ],
+          "text": "asthma"
+        },
+        "subject": {
+          "reference": "Patient/1265109"
+        },
+        "onsetAge": {
+          "value": 14,
+          "system": "http://unitsofmeasure.org",
+          "code": "a"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "http://hapi.fhir.org/baseR4/Condition/1265112",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1265112",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2020-06-23T05:29:43.908+00:00",
+          "source": "#TYMP8b4JHMJz2AYP"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Diabetes</div>"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "14657009",
+                "display": "Diagnosis"
+              }
+            ],
+            "text": "Diagnosis"
+          }
+        ],
+        "severity": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "6736007",
+              "display": "moderate"
+            }
+          ],
+          "text": "moderate"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "73211009",
+              "display": "diabetes"
+            }
+          ],
+          "text": "diabetes"
+        },
+        "subject": {
+          "reference": "Patient/1265109"
+        },
+        "onsetAge": {
+          "value": 60,
+          "system": "http://unitsofmeasure.org",
+          "code": "a"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "http://hapi.fhir.org/baseR4/Condition/1265120",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1265120",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2020-06-23T05:29:43.908+00:00",
+          "source": "#TYMP8b4JHMJz2AYP"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Onychomycosis</div>"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "14657009",
+                "display": "Diagnosis"
+              }
+            ],
+            "text": "Diagnosis"
+          }
+        ],
+        "severity": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "24484000",
+              "display": "severe"
+            }
+          ],
+          "text": "severe"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "414941998",
+              "display": "onychomycosis"
+            }
+          ],
+          "text": "onychomycosis"
+        },
+        "subject": {
+          "reference": "Patient/1265109"
+        },
+        "onsetAge": {
+          "value": 77,
+          "system": "http://unitsofmeasure.org",
+          "code": "a"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "http://hapi.fhir.org/baseR4/Condition/1265121",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1265121",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2020-06-23T05:29:43.908+00:00",
+          "source": "#TYMP8b4JHMJz2AYP"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Angina</div>"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "14657009",
+                "display": "Diagnosis"
+              }
+            ],
+            "text": "Diagnosis"
+          }
+        ],
+        "severity": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "6736007",
+              "display": "moderate"
+            }
+          ],
+          "text": "Moderate"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "194818000",
+              "display": "angina"
+            }
+          ],
+          "text": "angina"
+        },
+        "subject": {
+          "reference": "Patient/1265109"
+        },
+        "onsetAge": {
+          "value": 76,
+          "system": "http://unitsofmeasure.org",
+          "code": "a"
+        },
+        "evidence": [
+          {
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/ct",
+                    "code": "29857009",
+                    "display": "Chest Pain"
+                  }
+                ],
+                "text": "Chest Pain"
+              }
+            ]
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "http://hapi.fhir.org/baseR4/Condition/1265115",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1265115",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2020-06-23T05:29:43.908+00:00",
+          "source": "#TYMP8b4JHMJz2AYP"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Neuropathic pain</div>"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "14657009",
+                "display": "Diagnosis"
+              }
+            ],
+            "text": "Diagnosis"
+          }
+        ],
+        "severity": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "6736007",
+              "display": "moderate"
+            }
+          ],
+          "text": "moderate"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "247389009",
+              "display": "neuropathic pain"
+            }
+          ],
+          "text": "neuropathic pain"
+        },
+        "subject": {
+          "reference": "Patient/1265109"
+        },
+        "onsetAge": {
+          "value": 75,
+          "system": "http://unitsofmeasure.org",
+          "code": "a"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "http://hapi.fhir.org/baseR4/Condition/1265116",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1265116",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2020-06-23T05:29:43.908+00:00",
+          "source": "#TYMP8b4JHMJz2AYP"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Rheumatoid Arthritis</div>"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "14657009",
+                "display": "Diagnosis"
+              }
+            ],
+            "text": "Diagnosis"
+          }
+        ],
+        "severity": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "6736007",
+              "display": "moderate"
+            }
+          ],
+          "text": "Moderate"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "69896004",
+              "display": "rheumatoid arthritis"
+            }
+          ],
+          "text": "rheumatoid arthritis - both hands"
+        },
+        "bodySite": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/ct",
+                "code": "12861001",
+                "display": "both hands"
+              }
+            ],
+            "text": "both hands"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/1265109"
+        },
+        "onsetAge": {
+          "value": 72,
+          "system": "http://unitsofmeasure.org",
+          "code": "a"
+        },
+        "evidence": [
+          {
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/ct",
+                    "code": "57676002",
+                    "display": "Painful Joint"
+                  }
+                ],
+                "text": "Painful joint"
+              }
+            ]
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "http://hapi.fhir.org/baseR4/Condition/1265113",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1265113",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2020-06-23T05:29:43.908+00:00",
+          "source": "#TYMP8b4JHMJz2AYP"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Hypertension</div>"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "14657009",
+                "display": "Diagnosis"
+              }
+            ],
+            "text": "Diagnosis"
+          }
+        ],
+        "severity": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "255604002",
+              "display": "mild"
+            }
+          ],
+          "text": "Mild"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "38341003",
+              "display": "hypertension"
+            }
+          ],
+          "text": "hypertension"
+        },
+        "subject": {
+          "reference": "Patient/1265109"
+        },
+        "onsetAge": {
+          "value": 68,
+          "system": "http://unitsofmeasure.org",
+          "code": "a"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "http://hapi.fhir.org/baseR4/Condition/1265114",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1265114",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2020-06-23T05:29:43.908+00:00",
+          "source": "#TYMP8b4JHMJz2AYP"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Depression</div>"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "14657009",
+                "display": "Diagnosis"
+              }
+            ],
+            "text": "Diagnosis"
+          }
+        ],
+        "severity": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "6736007",
+              "display": "moderate"
+            }
+          ],
+          "text": "Moderate"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/ct",
+              "code": "35489007",
+              "display": "depression"
+            }
+          ],
+          "text": "depression"
+        },
+        "subject": {
+          "reference": "Patient/1265109"
+        },
+        "onsetAge": {
+          "value": 74,
+          "system": "http://unitsofmeasure.org",
+          "code": "a"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "http://hapi.fhir.org/baseR4/Patient/1265109",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "1265109",
+        "meta": {
+          "versionId": "2",
+          "lastUpdated": "2020-06-23T06:13:11.639+00:00",
+          "source": "#bBbjXV698fjige6j"
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Jeff Anderson</div>"
+        },
+        "identifier": [
+          {
+            "system": "http://clinfhir.com/fhir/NamingSystem/identifier",
+            "value": "jeff.anderson"
+          }
+        ],
+        "name": [
+          {
+            "use": "official",
+            "text": "Jeff B.Anderson",
+            "family": "Anderson",
+            "given": [
+              "Jeff"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "2008-04-08"
+      },
+      "search": {
+        "mode": "include"
+      }
+    }
+  ]
+}
