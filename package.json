@@ -1,7 +1,7 @@
 {
   "name": "med_info",
   "version": "1.0.0",
-  "description": "Search for medication and get details for the medication you specify",
+  "description": "Uses the FHIR api to calculate the current Quality of Life of a person.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
