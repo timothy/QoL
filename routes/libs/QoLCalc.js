@@ -119,14 +119,38 @@ const calcEndScore = (age) => {
     let calcImpact = (num) => (100 / (1 + num))
 
     all.impact = {
-        ageDingImpact: {value: calcImpact(all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal),desc: "Patients Age"},
-        totalConImpact: {value: calcImpact(all.ageDing + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal),desc: "Total number of conditions"},
-        svrCountImpact: {value: calcImpact(all.ageDing + all.totalCon + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal),desc: "Number of severe problems"},
-        modCountImpact: {value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal),desc: "Number of moderate problems"},
-        mildCountImpact: {value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.modCount + all.svrTotal + all.modTotal + all.mildTotal),desc: "Number of mild problems"},
-        svrTotalImpact: {value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.modCount + all.mildCount + all.modTotal + all.mildTotal),desc: "Accumulative years of all severe conditions"},
-        modTotalImpact: {value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.mildTotal),desc: "Accumulative years of all moderate conditions"},
-        mildTotalImpact: {value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal),desc: "Accumulative years of all mild conditions"}
+        ageDingImpact: {
+            value: calcImpact(all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal),
+            desc: "Patients Age"
+        },
+        totalConImpact: {
+            value: calcImpact(all.ageDing + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal),
+            desc: "Total number of conditions"
+        },
+        svrCountImpact: {
+            value: calcImpact(all.ageDing + all.totalCon + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal),
+            desc: "Number of severe problems"
+        },
+        modCountImpact: {
+            value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal),
+            desc: "Number of moderate problems"
+        },
+        mildCountImpact: {
+            value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.modCount + all.svrTotal + all.modTotal + all.mildTotal),
+            desc: "Number of mild problems"
+        },
+        svrTotalImpact: {
+            value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.modCount + all.mildCount + all.modTotal + all.mildTotal),
+            desc: "Accumulative years of all severe conditions"
+        },
+        modTotalImpact: {
+            value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.mildTotal),
+            desc: "Accumulative years of all moderate conditions"
+        },
+        mildTotalImpact: {
+            value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal),
+            desc: "Accumulative years of all mild conditions"
+        }
     }
 
     return all
@@ -137,7 +161,8 @@ const processQoL = async (patientID = 1265109) => {
         params: {
             patient: patientID,
             _include: "*",
-            _pretty: true
+            _format: "json",
+            //_pretty: true
         }
     }).then((response) => {
         //console.log(JSON.stringify(response.data, null, 2));
@@ -185,4 +210,38 @@ const processQoL = async (patientID = 1265109) => {
     //     // always executed
     // });
 }
-module.exports = {processQoL: processQoL}
+
+const GetSamplePatients = async () => {
+    return axios.get('http://hapi.fhir.org/baseR4/Condition', {
+        params: {
+            _format: "json"
+            //_pretty: true
+        }
+    }).then((response) => {
+        let samplePatients = []
+        if(response.hasOwnProperty("data") && response.data.hasOwnProperty("entry")) {
+            let entry = response.data.entry
+
+            for (let i in entry) {
+                if(entry.hasOwnProperty(i)
+                    && entry[i].hasOwnProperty("resource")
+                    && entry[i].resource.hasOwnProperty("subject")
+                    && entry[i].resource.subject.hasOwnProperty("reference")){
+                    samplePatients.push(entry[i].resource.subject.reference)
+                    console.log(entry[i].resource.subject.reference)
+                }
+            }
+        }
+
+        return samplePatients
+    })
+        .catch((error) => {
+            console.log(error);
+            //return error
+        })
+}
+
+module.exports = {
+    processQoL: processQoL,
+    GetSamplePatients:GetSamplePatients
+}
