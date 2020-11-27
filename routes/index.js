@@ -2,24 +2,10 @@ const express = require('express');
 const QoL = require('./libs/QoLCalc').processQoL;
 const router = express.Router();
 
-QoL().then(function (response) {
-    console.log(response);
-});
-
 let options = {'title': 'Quality of Life Score', 'width': 550, 'height': 400}
 
-/* GET home page. */
-router.get('/', (req, res, next) => {
-    let chart1 = [
-        ['QoL', 'Quality of Life Score'],
-        ['Health Impact', 8],
-        ['Quality of Life', 2],
-    ]
-
-
-    QoL().then((response) => {
-        console.log("The Response went through -> ", response)
-
+const handleResponse = (patientID, res) => {
+    QoL(patientID).then((response) => {
         let chart1 = [
             ['QoL', 'Quality of Life Score'],
             ['Health Impact', 100 - response.endScore],
@@ -49,8 +35,15 @@ router.get('/', (req, res, next) => {
             response: response
         });
     })
+}
 
+/* GET home page. */
+router.get('/', (req, res, next) => {
+    handleResponse(undefined, res)
+});
 
+router.get('/patient/:patientID', function (req, res) {
+    handleResponse(req.params.patientID, res)
 });
 
 
