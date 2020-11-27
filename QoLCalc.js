@@ -38,9 +38,9 @@ let QoL_score = {
     measurements: {
         numberOfConditions: {
             total: 0,// The more problems a person has the lower their QoL is
-            24484000: {code: 24484000, count: 0, name: "Severe",totalYearsPersonHadCondition:0},// Higher severity will reduce QoL greater than lower severity.
-            6736007: {code: 6736007, count: 0, name: "Moderate",totalYearsPersonHadCondition:0},
-            255604002: {code: 255604002, count: 0, name: "Mild",totalYearsPersonHadCondition:0},//totalYearsPersonHadCondition: This show accumulative years of all conditions with this severity. The longer the condition persists the greater the impact on QoL
+            24484000: {code: 24484000, count: 0, name: "Severe", totalYearsPersonHadCondition: 0},// Higher severity will reduce QoL greater than lower severity.
+            6736007: {code: 6736007, count: 0, name: "Moderate", totalYearsPersonHadCondition: 0},
+            255604002: {code: 255604002, count: 0, name: "Mild", totalYearsPersonHadCondition: 0},//totalYearsPersonHadCondition: This show accumulative years of all conditions with this severity. The longer the condition persists the greater the impact on QoL
         },
         age: [// Generally younger people have less illnesses. Younger people's QoL takes a bigger hit the more problems they have.
             {ding: 0, upper: 1000, lower: 85},
@@ -76,11 +76,11 @@ const updateTotal = (total) => {
  * @param onsetAge {number}
  * @param severity {string | number}
  */
-const totalYearsPersonHadCondition = (severity ,onsetAge, age) => {
+const totalYearsPersonHadCondition = (severity, onsetAge, age) => {
     const defaultLength = .3
     if ((age - onsetAge) > 0) {// get the value of years a condition has lasted
         QoL_score.measurements.numberOfConditions[severity].totalYearsPersonHadCondition += (age - onsetAge)
-    } else{//else either age or onsetAge does not make sense...
+    } else {//else either age or onsetAge does not make sense...
         QoL_score.measurements.numberOfConditions[severity].totalYearsPersonHadCondition += defaultLength
     }
 }
@@ -90,73 +90,79 @@ const totalYearsPersonHadCondition = (severity ,onsetAge, age) => {
  * @param age {number}
  * @returns {number}
  */
-const getAgeDing = (age)=> {
+const getAgeDing = (age) => {
     return QoL_score.measurements.age.find(e => e.upper >= age && e.lower <= age).ding
 }
 
+/**
+ *
+ * @param age {number} age of the patient
+ * @returns {number}
+ */
 const calcEndScore = (age) => {
     const safeDivide = (dividend, divisor) => (divisor === 0 || dividend === 0) ? 0 : dividend / divisor
 
-    return  QoL_score.endScore / (
+    return QoL_score.endScore / (
         1 +
         getAgeDing(age) + // The younger the person the higher the ding
         safeDivide(QoL_score.measurements.numberOfConditions.total, 1000) +
         safeDivide(QoL_score.measurements.numberOfConditions["24484000"].count, 100) + //Severe
         safeDivide(QoL_score.measurements.numberOfConditions["6736007"].count, 500) + //Moderate
         safeDivide(QoL_score.measurements.numberOfConditions["255604002"].count, 1000) + //Mild
-    safeDivide(QoL_score.measurements.numberOfConditions["24484000"].totalYearsPersonHadCondition, 100) + //Severe
-    safeDivide(QoL_score.measurements.numberOfConditions["6736007"].totalYearsPersonHadCondition, 500) + //Moderate
-    safeDivide(QoL_score.measurements.numberOfConditions["255604002"].totalYearsPersonHadCondition, 1000) //Mild
+        safeDivide(QoL_score.measurements.numberOfConditions["24484000"].totalYearsPersonHadCondition, 100) + //Severe
+        safeDivide(QoL_score.measurements.numberOfConditions["6736007"].totalYearsPersonHadCondition, 500) + //Moderate
+        safeDivide(QoL_score.measurements.numberOfConditions["255604002"].totalYearsPersonHadCondition, 1000) //Mild
     )
 
 }
+module.exports = QoLCalc = (patientID = 1265109) => {
+    axios.get('http://hapi.fhir.org/baseR4/Condition', {
+        params: {
+            patient: patientID,
+            _include: "*",
+            _pretty: true
+        }
+    }).then((response) => {
+        console.log(JSON.stringify(response.data, null, 2));
+        let age = 0
 
-axios.get('http://hapi.fhir.org/baseR4/Condition', {
-    params: {
-        patient: 1265109,
-        _include: "*",
-        _pretty: true
-    }
-}).then((response) => {
-    console.log(JSON.stringify(response.data, null, 2));
-    let age = 0
+        if (response.data.hasOwnProperty("entry") &&
+            response.data.hasOwnProperty("total")) {
+            age = getAge(response.data.entry.find(o => o.hasOwnProperty("resource") &&
+                o.resource.hasOwnProperty("birthDate") &&
+                o.resource.hasOwnProperty("resourceType") &&
+                o.resource.resourceType === "Patient")
+                .resource.birthDate)
 
-    if (response.data.hasOwnProperty("entry") &&
-        response.data.hasOwnProperty("total")) {
-          age = getAge(response.data.entry.find( o => o.hasOwnProperty("resource") &&
-            o.resource.hasOwnProperty("birthDate") &&
-            o.resource.hasOwnProperty("resourceType") &&
-            o.resource.resourceType === "Patient")
-            .resource.birthDate)
+            updateTotal(response.data.total)
 
-        updateTotal(response.data.total)
+            for (let obj of response.data.entry) {
+                if (obj.hasOwnProperty("resource") &&
+                    obj.resource.hasOwnProperty("resourceType")) {
+                    if (obj.resource.resourceType === "Condition") {
+                        if (obj.resource.hasOwnProperty("severity") &&
+                            obj.resource.severity.hasOwnProperty("coding") &&
+                            obj.resource.severity.coding[0].hasOwnProperty("code")) {
+                            updateSeverity(obj.resource.severity.coding[0].code)
 
-        for (let obj of response.data.entry) {
-            if (obj.hasOwnProperty("resource") &&
-                obj.resource.hasOwnProperty("resourceType")) {
-                if (obj.resource.resourceType === "Condition") {
-                    if (obj.resource.hasOwnProperty("severity") &&
-                        obj.resource.severity.hasOwnProperty("coding") &&
-                        obj.resource.severity.coding[0].hasOwnProperty("code")) {
-                        updateSeverity(obj.resource.severity.coding[0].code)
-
-                        if (obj.resource.hasOwnProperty("onsetAge") &&
-                            obj.resource.onsetAge.hasOwnProperty("value")) {
-                            totalYearsPersonHadCondition(obj.resource.severity.coding[0].code ,obj.resource.onsetAge.value, age)
+                            if (obj.resource.hasOwnProperty("onsetAge") &&
+                                obj.resource.onsetAge.hasOwnProperty("value")) {
+                                totalYearsPersonHadCondition(obj.resource.severity.coding[0].code, obj.resource.onsetAge.value, age)
+                            }
                         }
                     }
                 }
-            }
-        }//end loop
-    }
+            }//end loop
+        }
 
 
-    console.log(JSON.stringify(QoL_score, null, 2))
-    console.log(calcEndScore(age))
-})
-    .catch((error) => {
-        console.log(error);
+        console.log(JSON.stringify(QoL_score, null, 2))
+        console.log(calcEndScore(age))
     })
-    .then(() => {
-        // always executed
-    });
+        .catch((error) => {
+            console.log(error);
+        })
+        .then(() => {
+            // always executed
+        });
+}
