@@ -97,33 +97,50 @@ const getAgeDing = (age) => {
 /**
  *
  * @param age {number} age of the patient
- * @returns {number}
+ * @returns {object}
  */
 const calcEndScore = (age) => {
     const safeDivide = (dividend, divisor) => (divisor === 0 || dividend === 0) ? 0 : dividend / divisor
 
-    return QoL_score.endScore / (
-        1 +
-        getAgeDing(age) + // The younger the person the higher the ding
-        safeDivide(QoL_score.measurements.numberOfConditions.total, 1000) +
-        safeDivide(QoL_score.measurements.numberOfConditions["24484000"].count, 100) + //Severe
-        safeDivide(QoL_score.measurements.numberOfConditions["6736007"].count, 500) + //Moderate
-        safeDivide(QoL_score.measurements.numberOfConditions["255604002"].count, 1000) + //Mild
-        safeDivide(QoL_score.measurements.numberOfConditions["24484000"].totalYearsPersonHadCondition, 100) + //Severe
-        safeDivide(QoL_score.measurements.numberOfConditions["6736007"].totalYearsPersonHadCondition, 500) + //Moderate
-        safeDivide(QoL_score.measurements.numberOfConditions["255604002"].totalYearsPersonHadCondition, 1000) //Mild
-    )
+    const all = {
+        ageDing: getAgeDing(age),
+        totalCon: safeDivide(QoL_score.measurements.numberOfConditions.total, 1000),
+        svrCount: safeDivide(QoL_score.measurements.numberOfConditions["24484000"].count, 100), //Severe
+        modCount: safeDivide(QoL_score.measurements.numberOfConditions["6736007"].count, 500), //Moderate
+        mildCount: safeDivide(QoL_score.measurements.numberOfConditions["255604002"].count, 1000), //Mild
+        svrTotal: safeDivide(QoL_score.measurements.numberOfConditions["24484000"].totalYearsPersonHadCondition, 100), //Severe
+        modTotal: safeDivide(QoL_score.measurements.numberOfConditions["6736007"].totalYearsPersonHadCondition, 500), //Moderate
+        mildTotal: safeDivide(QoL_score.measurements.numberOfConditions["255604002"].totalYearsPersonHadCondition, 1000) //Mild
+    }
 
+    all.sum = all.ageDing + all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal
+    all.endScore = QoL_score.endScore / (1 + all.sum)
+
+    let calcImpact = (num) => (100 / (1 + num))
+
+    all.impact = {
+        ageDingImpact: {value: calcImpact(all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal),desc: "Patients Age"},
+        totalConImpact: {value: calcImpact(all.ageDing + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal),desc: "Total number of conditions"},
+        svrCountImpact: {value: calcImpact(all.ageDing + all.totalCon + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal),desc: "Number of severe problems"},
+        modCountImpact: {value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal),desc: "Number of moderate problems"},
+        mildCountImpact: {value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.modCount + all.svrTotal + all.modTotal + all.mildTotal),desc: "Number of mild problems"},
+        svrTotalImpact: {value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.modCount + all.mildCount + all.modTotal + all.mildTotal),desc: "Accumulative years of all severe conditions"},
+        modTotalImpact: {value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.mildTotal),desc: "Accumulative years of all moderate conditions"},
+        mildTotalImpact: {value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal),desc: "Accumulative years of all mild conditions"}
+    }
+
+    return all
 }
-module.exports = QoLCalc = (patientID = 1265109) => {
-    axios.get('http://hapi.fhir.org/baseR4/Condition', {
+
+const processQoL = async (patientID = 1265109) => {
+    return axios.get('http://hapi.fhir.org/baseR4/Condition', {
         params: {
             patient: patientID,
             _include: "*",
             _pretty: true
         }
     }).then((response) => {
-        console.log(JSON.stringify(response.data, null, 2));
+        //console.log(JSON.stringify(response.data, null, 2));
         let age = 0
 
         if (response.data.hasOwnProperty("entry") &&
@@ -156,13 +173,16 @@ module.exports = QoLCalc = (patientID = 1265109) => {
         }
 
 
-        console.log(JSON.stringify(QoL_score, null, 2))
+        // console.log(JSON.stringify(QoL_score, null, 2))
         console.log(calcEndScore(age))
+        return calcEndScore(age)
     })
         .catch((error) => {
             console.log(error);
+            //return error
         })
-        .then(() => {
-            // always executed
-        });
+    // .then(() => {
+    //     // always executed
+    // });
 }
+module.exports = {processQoL: processQoL}
