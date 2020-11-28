@@ -100,3 +100,131 @@ REST API
 
 **Return data for default patient**  
 `http://localhost:3000/api`
+
+Sample data for PatientID: `1182759`
+```JSON
+{
+  "title": "QoL",
+  "title2": "Factor weights for score",
+  "pieData": [
+    [
+      "QoL",
+      "Quality of Life Score"
+    ],
+    [
+      "Health Impact",
+      37.41394417323821
+    ],
+    [
+      "Quality of Life",
+      62.58605582676179
+    ]
+  ],
+  "pieData2": [
+    [
+      "QoL",
+      "Explanation of QoL scoring"
+    ],
+    [
+      "Patients Age",
+      91.09127345600291
+    ],
+    [
+      "Total number of conditions",
+      63.01991429291655
+    ],
+    [
+      "Number of severe problems",
+      63.379389022689814
+    ],
+    [
+      "Number of moderate problems",
+      64.02868485081316
+    ],
+    [
+      "Number of mild problems",
+      62.664494297531014
+    ],
+    [
+      "Accumulative years of all severe conditions",
+      62.821962558110314
+    ],
+    [
+      "Accumulative years of all moderate conditions",
+      63.46788525006346
+    ],
+    [
+      "Accumulative years of all mild conditions",
+      62.60956674179815
+    ]
+  ],
+  "qualityOfLifeData": {
+    "ageDing": 0.5,
+    "totalCon": 0.011,
+    "svrCount": 0.02,
+    "modCount": 0.036,
+    "mildCount": 0.002,
+    "svrTotal": 0.006,
+    "modTotal": 0.0222,
+    "mildTotal": 0.0006,
+    "sum": 0.5978000000000001,
+    "endScore": 62.58605582676179,
+    "impact": {
+      "ageDingImpact": {
+        "value": 91.09127345600291,
+        "desc": "Patients Age"
+      },
+      "totalConImpact": {
+        "value": 63.01991429291655,
+        "desc": "Total number of conditions"
+      },
+      "svrCountImpact": {
+        "value": 63.379389022689814,
+        "desc": "Number of severe problems"
+      },
+      "modCountImpact": {
+        "value": 64.02868485081316,
+        "desc": "Number of moderate problems"
+      },
+      "mildCountImpact": {
+        "value": 62.664494297531014,
+        "desc": "Number of mild problems"
+      },
+      "svrTotalImpact": {
+        "value": 62.821962558110314,
+        "desc": "Accumulative years of all severe conditions"
+      },
+      "modTotalImpact": {
+        "value": 63.46788525006346,
+        "desc": "Accumulative years of all moderate conditions"
+      },
+      "mildTotalImpact": {
+        "value": 62.60956674179815,
+        "desc": "Accumulative years of all mild conditions"
+      }
+    }
+  },
+  "samplePatients": [
+    "Patient/1188771",
+    "Patient/1188771",
+    "Patient/1188771",
+    "Patient/1188771",
+    "Patient/1188771",
+    "Patient/1188771",
+    "Patient/1188771",
+    "Patient/1188890",
+    "Patient/1188890",
+    "Patient/1188890",
+    "Patient/1188890",
+    "Patient/1188890",
+    "Patient/1188890",
+    "Patient/1188890",
+    "Patient/1188890",
+    "Patient/1188890",
+    "Patient/1188890",
+    "Patient/1188890",
+    "Patient/1189141",
+    "Patient/1189141"
+  ]
+}
+```
