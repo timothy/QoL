@@ -1,6 +1,6 @@
 {
   "name": "qol",
-  "version": "0.1.2",
+  "version": "0.2.1",
   "description": "Uses the FHIR api to calculate the current Quality of Life of a person.",
   "private": true,
   "scripts": {

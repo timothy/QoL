@@ -92,7 +92,7 @@ const totalYearsPersonHadCondition = (severity, onsetAge, age) => {
  */
 const getAgeDing = (age) => {
     const dingy = QoL_score.measurements.age.find(e => e.upper >= age && e.lower <= age)
-    if(dingy.hasOwnProperty("ding")) return dingy.ding
+    if (dingy.hasOwnProperty("ding")) return dingy.ding
 
     return 0.4 //default
 }
@@ -104,7 +104,7 @@ const getAgeDing = (age) => {
  */
 const calcEndScore = (age) => {
     const safeDivide = (dividend, divisor) => (divisor === 0 || dividend === 0) ? 0 : dividend / divisor
-
+console.log(JSON.stringify(QoL_score, null, 2))
     const all = {
         ageDing: getAgeDing(age),
         totalCon: safeDivide(QoL_score.measurements.numberOfConditions.total, 1000),
@@ -116,45 +116,53 @@ const calcEndScore = (age) => {
         mildTotal: safeDivide(QoL_score.measurements.numberOfConditions["255604002"].totalYearsPersonHadCondition, 1000) //Mild
     }
 
-    all.sum = all.ageDing + all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal//todo age ding needs to be a multiplier of the other health hits. i.e. a healthy young person should not be dinged unless they have a health issue/s
-    all.endScore = QoL_score.endScore / (1 + all.sum)
+    all.sum = all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal
+    const threshold = (num) => (num >= 1) ? 0 : 1//make sure multiplier increases the number
 
-    let calcImpact = (num) => (100 / (1 + num))
+    let calcImpact = (num, ageDing = true) => {
+        if (ageDing) num *= (threshold(all.ageDing) + all.ageDing)
+
+        return safeDivide(100 , (threshold(num) + num))
+    }
 
     all.impact = {
         ageDingImpact: {
-            value: calcImpact(all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal),
+            value: calcImpact(all.sum, false),
             desc: "Patients Age"
         },
         totalConImpact: {
-            value: calcImpact(all.ageDing + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal),
+            value: calcImpact(all.sum - all.totalCon),
             desc: "Total number of conditions"
         },
         svrCountImpact: {
-            value: calcImpact(all.ageDing + all.totalCon + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal),
+            value: calcImpact(all.sum - all.svrCount),
             desc: "Number of severe problems"
         },
         modCountImpact: {
-            value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal),
+            value: calcImpact(all.sum - all.modCount),
             desc: "Number of moderate problems"
         },
         mildCountImpact: {
-            value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.modCount + all.svrTotal + all.modTotal + all.mildTotal),
+            value: calcImpact(all.sum - all.mildCount),
             desc: "Number of mild problems"
         },
         svrTotalImpact: {
-            value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.modCount + all.mildCount + all.modTotal + all.mildTotal),
+            value: calcImpact(all.sum - all.svrTotal),
             desc: "Accumulative years of all severe conditions"
         },
         modTotalImpact: {
-            value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.mildTotal),
+            value: calcImpact(all.sum - all.modTotal),
             desc: "Accumulative years of all moderate conditions"
         },
         mildTotalImpact: {
-            value: calcImpact(all.ageDing + all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal),
+            value: calcImpact(all.sum - all.mildTotal),
             desc: "Accumulative years of all mild conditions"
         }
     }
+
+    all.sum *= (threshold(all.ageDing) + all.ageDing)//age ding needs to be a multiplier of the other health hits. i.e. a healthy young person should not be dinged unless they have a health issue/s
+
+    all.endScore = safeDivide(QoL_score.endScore, (threshold(all.sum) + all.sum))
 
     return all
 }
@@ -222,14 +230,14 @@ const GetSamplePatients = async () => {
         }
     }).then((response) => {
         let samplePatients = []
-        if(response.hasOwnProperty("data") && response.data.hasOwnProperty("entry")) {
+        if (response.hasOwnProperty("data") && response.data.hasOwnProperty("entry")) {
             let entry = response.data.entry
 
             for (let i in entry) {
-                if(entry.hasOwnProperty(i)
+                if (entry.hasOwnProperty(i)
                     && entry[i].hasOwnProperty("resource")
                     && entry[i].resource.hasOwnProperty("subject")
-                    && entry[i].resource.subject.hasOwnProperty("reference")){
+                    && entry[i].resource.subject.hasOwnProperty("reference")) {
                     samplePatients.push(entry[i].resource.subject.reference)
                     //console.log(entry[i].resource.subject.reference)
                 }
@@ -246,5 +254,5 @@ const GetSamplePatients = async () => {
 
 module.exports = {
     processQoL: processQoL,
-    GetSamplePatients:GetSamplePatients
+    GetSamplePatients: GetSamplePatients
 }
