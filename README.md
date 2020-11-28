@@ -7,7 +7,7 @@ Table of contents
 <!--ts-->
    * [How to run locally](#how-to-run-locally)
    * [How to run from Docker](#how-to-run-from-docker)
-   * [Docker Cheatsheet](#Docker-Cheatsheet)
+      * [Docker Cheatsheet](#Docker-Cheatsheet)
    * [How to Navigate the site](#navigate-the-site)
       * [Quality of Life (QoL) Score](#Quality-of-Life-(QoL)-Score)
       * [Explanation for Results](#Explanation-for-Results)
@@ -49,7 +49,7 @@ To find QoL for specific patient: `http://0.0.0.0:49160/Patient/<put Patient ID 
 To inspect the server logs take the `docker logs <CONTAINER ID>` an example using the above data `docker logs 19bad986b95b`
 
 Docker Cheatsheet
-=================
+-----------------
 ```
 docker ps                                 # Get info on containers that are running
 docker stop <CONTAINER ID>                # Stop container using container id found with "docker ps"
