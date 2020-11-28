@@ -1,4 +1,4 @@
-# QoL
+# Quality of Life (QoL)
 Uses the FHIR api (`http://hapi.fhir.org/`) to calculate the current Quality of Life of a patient. 
 
 Table of contents
