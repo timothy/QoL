@@ -92,7 +92,7 @@ const totalYearsPersonHadCondition = (severity, onsetAge, age) => {
  */
 const getAgeDing = (age) => {
     const dingy = QoL_score.measurements.age.find(e => e.upper >= age && e.lower <= age)
-    if (dingy.hasOwnProperty("ding")) return dingy.ding
+    if (dingy && dingy.hasOwnProperty("ding")) return dingy.ding
 
     return 0.4 //default
 }
@@ -104,7 +104,7 @@ const getAgeDing = (age) => {
  */
 const calcEndScore = (age) => {
     const safeDivide = (dividend, divisor) => (divisor === 0 || dividend === 0) ? 0 : dividend / divisor
-console.log(JSON.stringify(QoL_score, null, 2))
+
     const all = {
         ageDing: getAgeDing(age),
         totalCon: safeDivide(QoL_score.measurements.numberOfConditions.total, 1000),
@@ -176,7 +176,6 @@ const processQoL = async (patientID = 1265109) => {
             //_pretty: true
         }
     }).then((response) => {
-        //console.log(JSON.stringify(response.data, null, 2));
         let age = 0
 
         if (response.data.hasOwnProperty("entry") &&
@@ -208,9 +207,6 @@ const processQoL = async (patientID = 1265109) => {
             }//end loop
         }
 
-
-        // console.log(JSON.stringify(QoL_score, null, 2))
-        //console.log(calcEndScore(age))
         return calcEndScore(age)
     })
         .catch((error) => {
@@ -239,7 +235,6 @@ const GetSamplePatients = async () => {
                     && entry[i].resource.hasOwnProperty("subject")
                     && entry[i].resource.subject.hasOwnProperty("reference")) {
                     samplePatients.push(entry[i].resource.subject.reference)
-                    //console.log(entry[i].resource.subject.reference)
                 }
             }
         }
