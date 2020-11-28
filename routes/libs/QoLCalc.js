@@ -50,7 +50,7 @@ let QoL_score = {
             {ding: 0.4, upper: 37, lower: 26},
             {ding: 0.5, upper: 25, lower: 17},
             {ding: 0.6, upper: 16, lower: 8},
-            {ding: 0.8, upper: 0, lower: 7}
+            {ding: 0.8, upper: 7, lower: 0}
         ]
     }
 };
@@ -91,7 +91,10 @@ const totalYearsPersonHadCondition = (severity, onsetAge, age) => {
  * @returns {number}
  */
 const getAgeDing = (age) => {
-    return QoL_score.measurements.age.find(e => e.upper >= age && e.lower <= age).ding
+    const dingy = QoL_score.measurements.age.find(e => e.upper >= age && e.lower <= age)
+    if(dingy.hasOwnProperty("ding")) return dingy.ding
+
+    return 0.4 //default
 }
 
 /**
@@ -113,7 +116,7 @@ const calcEndScore = (age) => {
         mildTotal: safeDivide(QoL_score.measurements.numberOfConditions["255604002"].totalYearsPersonHadCondition, 1000) //Mild
     }
 
-    all.sum = all.ageDing + all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal
+    all.sum = all.ageDing + all.totalCon + all.svrCount + all.modCount + all.mildCount + all.svrTotal + all.modTotal + all.mildTotal//todo age ding needs to be a multiplier of the other health hits. i.e. a healthy young person should not be dinged unless they have a health issue/s
     all.endScore = QoL_score.endScore / (1 + all.sum)
 
     let calcImpact = (num) => (100 / (1 + num))
