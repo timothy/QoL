@@ -199,7 +199,7 @@ const processQoL = async (patientID = 1265109) => {
 
 
         // console.log(JSON.stringify(QoL_score, null, 2))
-        console.log(calcEndScore(age))
+        //console.log(calcEndScore(age))
         return calcEndScore(age)
     })
         .catch((error) => {
@@ -228,7 +228,7 @@ const GetSamplePatients = async () => {
                     && entry[i].resource.hasOwnProperty("subject")
                     && entry[i].resource.subject.hasOwnProperty("reference")){
                     samplePatients.push(entry[i].resource.subject.reference)
-                    console.log(entry[i].resource.subject.reference)
+                    //console.log(entry[i].resource.subject.reference)
                 }
             }
         }
