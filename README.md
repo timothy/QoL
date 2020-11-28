@@ -10,9 +10,9 @@ Table of contents
    * [Docker Cheatsheet](#Docker-Cheatsheet)
    * [How to Navigate the site](#navigate-the-site)
       * [Quality of Life (QoL) Score](#Quality-of-Life-(QoL)-Score)
-      * [Explanation for Results](#Explanation for Results)
-      * [Sample Patients](#Sample Patients)
-   * [REST API](#REST API)
+      * [Explanation for Results](#Explanation-for-Results)
+      * [Sample Patients](#Sample-Patients)
+   * [REST API](#REST-API)
 <!--te-->
 
 How to run locally
