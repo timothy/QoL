@@ -17,12 +17,12 @@ Table of contents
 
 How to run locally
 ==================
-1. install nodeJS
+1. Install nodeJS
 1. Navigate to repo using terminal e.g. `cd /dir/to/repo/QoL`
-1. in the terminal: `npm install`
-1. in the terminal: `npm start`
-1. in the browser (Chrome/Firefox/etc): `http://localhost:3000/`
-1. in the browser (Chrome/Firefox/etc): `http://localhost:3000/Patient/<put Patient ID here>`
+1. In the terminal: `npm install`
+1. In the terminal: `npm start`
+1. In the browser (Chrome/Firefox/etc): `http://localhost:3000/`
+1. In the browser (Chrome/Firefox/etc): `http://localhost:3000/Patient/<put Patient ID here>`
 
 How to run from Docker
 ======================
